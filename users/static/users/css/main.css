@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Mate&display=swap');
+
+
+ body {
+      background: #F8F9FA;
+      color: #333333;
+      margin-top: 5rem;
+      font-family: 'Mate', serif;
+    }
+
+    p {
+        font-size:18px;
+    }
+
+    .bg-steel {
+      background-color: #5f788a;
+    }
+
+    .site-header .navbar-nav .nav-link {
+        color: white;
+    }
+
+    .site-header .navbar-nav .nav-link:hover {
+        color: skyblue;
+    }
+
+    .site-header .navbar-nav .nav-link.active {
+        font-weight: bold;
+    }
+
+    .content-section:hover {
+      box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+    }
+
+    .content-section {
+  background: #ffffff;
+  padding: 5px 10px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  word-wrap: break-word;
+  box-sizing: border-box;
+
+
+}
+
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
+}
+
+ul {
+  margin: 0;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+
+.account-heading {
+  font-size: 2.5rem;
+}
+
+.content-footer {
+  margin: 50px 0;
+  padding: 20px 0;
+  text-align: center;
+  background-color: #73A8C2;
+  text-decoration: none;
+}
+
+.content-footer > p {
+  color: #F7EDE1;
+}
+
+
+.v-container {
+  position: relative;
+  margin-top: 50px;
+  width: 500px;
+  height: 300px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.5s ease;
+}
+
+.v-container:hover .overlay {
+  display: block;
+  background: rgba(0, 0, 0, .3);
+}
+
+.v-img {
+  position: absolute;
+  width: 500px;
+  height: 300px;
+  left: 0;
+}
+
+.v-title {
+  position: absolute;
+  width: 500px;
+  left: 0;
+  top: 120px;
+  font-weight: 700;
+  font-size: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  z-index: 1;
+  transition: top .5s ease;
+}
+
+.v-container:hover .v-title {
+  top: 90px;
+}
+
+.v-button {
+  position: absolute;
+  width: 500px;
+  left:0;
+  top: 180px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+
+.v-button a {
+  width: 200px;
+  padding: 12px 48px;
+  text-align: center;
+  color: white;
+  border: solid 2px white;
+  z-index: 1;
+}
+
+.v-container:hover .v-button {
+  opacity: 1;
+}

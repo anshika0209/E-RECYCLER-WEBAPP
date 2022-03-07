@@ -1,0 +1,29 @@
+{% extends 'users/base.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+<center>
+ <h2><b>Verification slots available.</b></h2>
+</center>
+<center>
+<div class="v-container">
+  <img class="v-img"src="https://wallpaperaccess.com/full/1308159.jpg" alt="" />
+  <p class="v-title">Amazon verification</p>
+  <div class="overlay"></div>
+  <div class="v-button"><a href="{% url "amazon-verify" %}"> <b>Verify</b> </a></div>
+</div>
+</center>
+<br>
+<center>
+<div class="v-container">
+  <img class="v-img"src="https://assets.entrepreneur.com/content/3x2/2000/20180511063849-flipkart-logo-detail-icon.jpeg" alt="" />
+  <p class="v-title">FlipKart verification</p>
+  <div class="overlay"></div>
+  <div class="v-button"><a href="{% url "flipcart-verify" %}"> <b>Verify</b> </a></div>
+</div>
+</center>
+</div>
+
+
+{% endblock content %}

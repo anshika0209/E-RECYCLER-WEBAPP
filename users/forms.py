@@ -1,8 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.forms import fields
 from .models import AmazonImageVerify,FlipcartImageVerify
+
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -35,7 +35,7 @@ class AmazonImageVerifyForm(forms.ModelForm):
     class Meta:
         model = AmazonImageVerify
         fields = ['a_image',]
-
+     
 class FlipcartImageVerifyForm(forms.ModelForm):
     class Meta:
         model = FlipcartImageVerify

@@ -12,8 +12,8 @@
         font-size:18px;
     }
 
-    .bg-steel {
-      background-color: #5f788a;
+    .bg-main {
+      background-color: #212529;
     }
 
     .site-header .navbar-nav .nav-link {
@@ -21,7 +21,7 @@
     }
 
     .site-header .navbar-nav .nav-link:hover {
-        color: skyblue;
+        color: #F1B114;
     }
 
     .site-header .navbar-nav .nav-link.active {
@@ -147,8 +147,10 @@ ul {
   padding: 12px 48px;
   text-align: center;
   color: white;
+  font-weight: bold;
   border: solid 2px white;
   z-index: 1;
+  text-decoration: none;
 }
 
 .v-container:hover .v-button {

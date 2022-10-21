@@ -1,4 +1,3 @@
-from typing import final
 from django.conf import settings
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -18,13 +17,28 @@ from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from .models import AmazonImageVerify
-from pinax.points.models import award_points,points_awarded
+from pinax.points.models import award_points, AwardedPointValue
+import sqlite3
 
 
 
 
 # Create your views here.
 def home(request):
+    get_data = AwardedPointValue.objects.all().count()
+
+    if get_data == 0:
+        conn = sqlite3.connect('db.sqlite3')
+
+        cursor = conn.cursor()
+
+        command = "DELETE FROM PINAX_POINTS_TARGETSTAT"
+
+        cursor.execute(command)
+
+        conn.commit()
+
+        conn.close()
 
     # ptsf = FlipcartImageVerify.objects.filter(user=request.user.id).values_list('points',flat=True).count()
     # ptsfinal = int(ptsa) + int(ptsf)

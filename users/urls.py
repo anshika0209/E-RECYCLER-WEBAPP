@@ -2,11 +2,14 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
 
+
+
 urlpatterns = [
     path('',views.home,name="home"),
     
     path('register/',views.register,name="register"),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html',redirect_authenticated_user=True) ,name= 'login'),
+    path('profile/',views.profile,name="profile"),
     path('verification/', views.VerificationSlots ,name= 'verify'),
     path('verification/amazon/', views.AImageVerify ,name= 'amazon-verify'),
     path('verification/flipcart/', views.FImageVerify ,name= 'flipcart-verify'),

@@ -19,13 +19,11 @@ from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
 
-admin.site.site_header = 'E-Recycler Admin Login'
+admin.site.site_header = 'E-Recycler Admin'
 admin.site.site_title = 'E-Recycler Admin Area'
 admin.site.index_title = "Welcome to E-Recycler"
 
 urlpatterns = [
-    url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
-    url(r'^jet/', include('jet.urls', 'jet')),
     path('admin/', admin.site.urls),
     path('', include('users.urls')),
 ]

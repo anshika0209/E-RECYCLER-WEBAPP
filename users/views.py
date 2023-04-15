@@ -21,6 +21,7 @@ from pinax.points.models import award_points, AwardedPointValue
 import sqlite3
 
 
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Create your views here.
@@ -112,9 +113,12 @@ def AImageVerify(request):
             name.save()
             
             img = str(form.cleaned_data.get('a_image'))
-            inpt = './media/amazon_images/'+img
+            print(img)
+            # inpt = os.path.join({ROOT_DIR}\\media\\amazon_images\\'+img()
+            inpt = str(os.path.join(ROOT_DIR, "media", "amazon_images")+"\\"+img)
             # Load the model
-            model = load_model('./keras_model.h5')
+            # model = load_model(fr'{ROOT_DIR}\\keras_model.h5')
+            model = load_model(os.path.join(ROOT_DIR, "users", "keras_model.h5"))
 
             # Create the array of the right shape to feed into the keras model
             # The 'length' or number of images you can put into the array is
@@ -138,7 +142,9 @@ def AImageVerify(request):
             prediction = model.predict(data)[0]
             predicted_class = None
 
-            second_check = os.listdir("./media/amazon_images")
+            # second_check = os.listdir(f"{ROOT_DIR}\\media/amazon_images")
+            sc_path = str(os.path.join(ROOT_DIR, "media", "amazon_images"))
+            second_check = os.listdir(sc_path)
 
             for i in second_check:
                 splt = os.path.splitext(i)
@@ -148,7 +154,9 @@ def AImageVerify(request):
            
             if img in ck:
                 predicted_class = "This photo was already uploaded"
-                os.remove("./media/amazon_images/"+img)
+                # os.remove(f"{ROOT_DIR}/media/amazon_images/"+img)
+                rm_path = str(os.path.join(ROOT_DIR, "media", "amazon_images")+"\\"+img)
+                os.remove(rm_path)
                 messages.warning(request,f'{predicted_class}')
                 return redirect(reverse('amazon-verify'))
 
@@ -181,7 +189,8 @@ def AImageVerify(request):
                 qr.add_data(data)
                 qr.make (fit = True) ## makes the size changable
                 imge = qr.make_image(fill = 'black' , back_color= 'white' )## making the qr code
-                pth = f"./qrcodes/amazon/{request.user.username}{unid}.png"
+                pth = fr"{ROOT_DIR}\\qrcodes\\amazon\\{request.user.username}{unid}.png"
+
                 imge.save(pth)
 
                 image1=cv2.imread(dest)
@@ -193,7 +202,7 @@ def AImageVerify(request):
                 image2=cv2.resize(image2,sze)
 
                 final_img =np.hstack([image1,image2])
-                f_out = f"./final_output/amazon/{request.user.username}{unid}"+".png"
+                f_out = rf"{ROOT_DIR}\\final_output\\amazon\\{request.user.username}{unid}.png"
                 sve = cv2.imwrite(f_out,final_img)
 
                 subject = "Image verification successful (E-recycler)"
@@ -240,7 +249,7 @@ def AImageVerify(request):
                 # Log in to server using secure context and send email
                 context = ssl.create_default_context()
                 with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-                    server.login(sender_email, 'grfbsxqyymukecvg')
+                    server.login(sender_email, 'hwsddchjnrsweyfu')
                     server.sendmail(sender_email, receiver_email, text)
                 award_points(request.user, 10)
 
